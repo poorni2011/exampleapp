@@ -44,8 +44,10 @@ class _LastLoginPageState extends State<LastLoginPage> {
             child:
                 BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
               if (state is AuthLoggedOutState) {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
+                Navigator.pushAndRemoveUntil(context, 
+                MaterialPageRoute(builder: (context)=> const LoginPage()), (route) => false);
+                // Navigator.pushReplacement(context,
+                //     MaterialPageRoute(builder: (context) => const LoginPage()));
               }
             }, builder: (context, state) {
               return TextButton(

@@ -54,8 +54,8 @@ class _DashboardPageState extends State<DashboardPage> {
             child:
                 BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
               if (state is AuthLoggedOutState) {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()));
+                Navigator.pushAndRemoveUntil(context, 
+                MaterialPageRoute(builder: (context)=> const LoginPage()), (route) => false);
               }
             }, builder: (context, state) {
               return TextButton(
